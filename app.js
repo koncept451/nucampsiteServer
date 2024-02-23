@@ -7,9 +7,7 @@ const FileStore = require('session-file-store')(session);
 const passport = require('passport');
 const authenticate = require('./authenticate');
 const config = require('./config');
-
-
-
+const uploadRouter = require('./routes/uploadRouter');
 
 const url = config.mongoUrl;
 const connect = mongoose.connect(url, {
@@ -51,6 +49,7 @@ app.set('view engine', 'jade');
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use('/imageUpload', uploadRouter);
 
 app.use(logger('dev'));
 app.use(express.json());
