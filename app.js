@@ -8,6 +8,7 @@ const passport = require('passport');
 const authenticate = require('./authenticate');
 const config = require('./config');
 const uploadRouter = require('./routes/uploadRouter');
+const favoriteRouter = require('./routes/favoriteRouter');
 
 const url = config.mongoUrl;
 const connect = mongoose.connect(url, {
@@ -86,6 +87,7 @@ app.use('/users', usersRouter);
 app.use('/campsites', campsiteRouter);
 app.use('/promotions', promotionRouter);
 app.use('/partners', partnerRouter);
+app.use('/favorites', favoriteRouter);
 
 
 // catch 404 and forward to error handler
